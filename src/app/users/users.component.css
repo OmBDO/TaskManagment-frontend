@@ -1,0 +1,133 @@
+.task-section {
+  padding: 10px 20px;
+}
+
+.task-frame-table table {
+  width: 100%;
+  border-spacing: 0;
+}
+.task-frame-table table thead {
+  border-spacing: 0;
+  padding: 10px;
+  background-color: #ffeded;
+}
+
+.task-frame-table table thead tr {
+  background-color: #fdaaaa;
+}
+.task-frame-table table thead tr th {
+  text-align: start;
+  font-weight: 100;
+  justify-self: center;
+}
+
+table thead th,
+table thead td {
+  padding: 10px;
+}
+.task-frame-table table thead tr th.option-cell {
+  background-color: rgb(218, 217, 217) !important;
+}
+.task-frame-table table thead tr th div {
+  display: flex;
+  gap: 5px;
+}
+
+thead tr th div img {
+  cursor: pointer;
+}
+
+/* background color for all tell */
+/* tr.critical {
+  background-color: #ffebee;
+}
+
+tr.high {
+  background-color: #fff3e0;
+}
+
+tr.medium {
+  background-color: #fffde7;
+}
+
+tr.low {
+  background-color: #e8f5e9;
+} */
+
+/* ///pagination styling */
+/* Container layout (flexbox) */
+.pagination-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 0.5rem; /* Space between items */
+  padding: 1rem 0;
+  background-color: #ffffff;
+  border-radius: 8px;
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
+  margin-top: 1rem;
+}
+
+/* Base style for buttons (Previous/Next) */
+.pagination-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e0e0e0;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #424242;
+  font-weight: 500;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.critical {
+  background-color: rgb(255, 237, 237);
+  border-collapse: collapse;
+}
+
+/* Base style for page numbers (boxes) */
+.page-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  color: #424242;
+  font-weight: 500;
+}
+
+.page-number.dots {
+  cursor: default;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.page-number.active {
+  background-color: #ffa39e; /* Deep purple */
+  color: #ffffff;
+  border-color: #ffa39e;
+}
+.page-number.hide {
+  display: none !important;
+}
+
+/* not found */
+/* ---------------- */
+.not-found {
+  width: 100%;
+  text-align: center;
+}
+
+img {
+  filter: brightness(0);
+
+  filter: invert(1);
+}

@@ -1,0 +1,99 @@
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.task-header-left input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  font-size: 14px;
+  width: 200px;
+}
+.task-header-left input:focus {
+  border-color: #ff5858;
+  outline: 1px solid #ff5858;
+}
+
+.task-header-left {
+  display: flex;
+  align-items: start;
+
+  justify-content: center;
+  align-items: center;
+  justify-content: start;
+}
+
+.task-header-left .sort-button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.sort-button {
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  display: flex;
+}
+
+.sort-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.sort-button h3 {
+  margin: 0;
+  font-size: 17px;
+  color: rgb(65, 64, 64);
+  font-weight: lighter;
+}
+
+/* /* right part * */
+.task-header-right {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.task-header-right p {
+  font-size: 30px;
+  font-weight: 100;
+  color: white;
+  cursor: pointer;
+  background-color: #ff5858;
+  text-align: center;
+  display: flex;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 30%;
+}
+.task-header-right button {
+  background-color: #ff5858;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 90px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.task-search {
+  display: flex;
+  gap: 5px;
+  margin-right: 20px;
+}
+
+.task-search img {
+  cursor: pointer;
+}

@@ -1,0 +1,107 @@
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  border-bottom: #d5d5d5 1px solid;
+}
+
+.header-one {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-two {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+}
+.user-profile {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.avatar {
+  background-color: #ff6b6b;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.user-profile h1 {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.main-nav li a {
+  text-decoration: none;
+  color: #888;
+  padding: 0 15px;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.main-nav li a:hover {
+  color: #333;
+}
+
+.main-nav li.active a {
+  color: #ff6b6b;
+  border-bottom: 2px solid #ff6b6b;
+  padding-bottom: 8px;
+}
+
+.search-container input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  font-size: 14px;
+  margin-right: 20px;
+  width: 200px;
+}
+
+.add-task-btn {
+  background-color: #ff6b6b;
+  color: #ffffff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.add-task-btn:hover {
+  background-color: #e65c5c;
+}

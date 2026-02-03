@@ -1,0 +1,148 @@
+<div class="auth-container">
+  <!-- Left Side Image Section -->
+  <div class="task-image">
+    <img src="../../assets/image/picture/taskAuthBack.png" alt="Task management background" />
+  </div>
+
+  <!-- Right Side Authentication Section -->
+  <div class="auth-section">
+    @if (isLoginMode()) {
+      <!-- Login Form -->
+      <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+        <h2>Login to Your Account</h2>
+        <p>Welcome back! Please enter your details.</p>
+
+        <div class="form-group">
+          <label for="login-email">Email Address</label>
+          <input
+            type="email"
+            id="login-email"
+            required
+            formControlName="email"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input
+            type="password"
+            formControlName="password"
+            id="login-password"
+            required
+            placeholder="••••••••"
+          />
+        </div>
+
+        <button type="submit" [disabled]="loginForm.invalid" class="primary-btn">
+          {{ isLoading() ? 'Logging...' : 'Login' }}
+        </button>
+
+        <div class="switch-mode">
+          Don't have an account?
+          <a (click)="toggleMode()">Sign Up</a>
+        </div>
+        <div *ngIf="isError().length != 0" class="error-banner">
+          <h3>Error:</h3>
+          <p>{{ isError() }}</p>
+        </div>
+      </form>
+      @if (loginSugmitted && loginForm.invalid && (loginForm.dirty || loginForm.touched)) {
+        <div class="error-summary">Please enter a valid email and password to continue.</div>
+      }
+    } @else {
+      <!-- Register Form -->
+      <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+        <h2>Create an Account</h2>
+        <p>Get started with managing your tasks!</p>
+
+        <div class="form-group">
+          <label for="register-firstname">First Name</label>
+          <input
+            type="text"
+            id="register-firstname"
+            formControlName="firstname"
+            required
+            placeholder="Om"
+          />
+        </div>
+        <div class="form-group">
+          <label for="register-lastname">Last Name</label>
+          <input
+            type="text"
+            id="register-lastname"
+            formControlName="lastname"
+            required
+            placeholder="Jamnekar"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="register-email">Email Address</label>
+          <input
+            type="email"
+            id="register-email"
+            formControlName="email"
+            required
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="register-password">Password</label>
+          <input
+            type="password"
+            id="register-password"
+            formControlName="password"
+            required
+            placeholder="••••••••"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="role">Select Role</label>
+          <select class="form-control role-section" id="role" name="role" formControlName="role">
+            <option value="" disabled selected>Select Role</option>
+            <option value="User">User</option>
+            <option value="Administrator">Admin</option>
+          </select>
+        </div>
+
+        <button type="submit" [disabled]="registerForm.invalid" class="primary-btn">
+          {{ isLoading() ? 'Registering...' : 'Register' }}
+        </button>
+
+        <div class="switch-mode">
+          Already have an account?
+          <a (click)="toggleMode()">Login</a>
+        </div>
+
+        <div *ngIf="isError().length != 0" class="error-banner">
+          <h3>Error:</h3>
+          <p>{{ isError() }}</p>
+        </div>
+      </form>
+
+      @if (
+        registerSumbitted && registerForm.invalid && (registerForm.dirty || registerForm.touched)
+      ) {
+        <div class="error-summary">
+          <ul>
+            @if (registerForm.get('name')?.invalid) {
+              <li>Name is required</li>
+            }
+            @if (registerForm.get('email')?.invalid) {
+              <li>Please provide a valid email</li>
+            }
+            @if (registerForm.get('password')?.invalid) {
+              <li>Password must be at least 6 characters</li>
+            }
+            @if (registerForm.get('role')?.invalid) {
+              <li>Please select a role</li>
+            }
+          </ul>
+        </div>
+      }
+    }
+  </div>
+</div>

@@ -1,0 +1,20 @@
+.option-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  min-width: 150px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.option-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.option-item:hover {
+  background-color: #f1f1f1;
+}

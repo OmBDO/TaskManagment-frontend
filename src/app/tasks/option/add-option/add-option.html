@@ -1,0 +1,69 @@
+<dialog class="dialog-overlay" open>
+  <div class="dialog-box">
+    <p class="dialog-message">Add Task</p>
+    <form class="form" #editForm="ngForm">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        #title="ngModel"
+        [(ngModel)]="taskModel.title"
+        name="title"
+        required
+      />
+      @if (title.invalid && title.touched) {
+        <small class="error">Title is required.</small>
+      }
+      <label for="description">Description</label>
+      <input
+        type="text"
+        id="description"
+        #description="ngModel"
+        [(ngModel)]="taskModel.description"
+        name="description"
+        required
+      />
+      @if (description.invalid && description.touched) {
+        <small class="error">Title is required.</small>
+      }
+      <label for="dueDate">Due Date</label>
+      <input
+        type="date"
+        id="dueDate"
+        [min]="minDate"
+        [(ngModel)]="taskModel.dueDate"
+        name="dueDate"
+        required
+      />
+      <label for="priority">Priority</label>
+      <select id="priority" [(ngModel)]="taskModel.priority" name="priority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+        <option value="high">Critical</option>
+      </select>
+
+      <label for="status">Status</label>
+      <select id="status" [(ngModel)]="taskModel.status" name="status">
+        @for (item of statuses; track item) {
+          <option [value]="item">{{ StatusEnum[item] }}</option>
+        }
+      </select>
+
+      <label for="users">Users</label>
+      <select id="users" [(ngModel)]="taskModel.userId" name="users" required>
+        @for (user of usersDetail(); track user.id) {
+          <option [value]="user.id">{{ user.firstName + ' ' + user.lastName }}</option>
+        }
+      </select>
+    </form>
+
+    <div class="dialog-actions">
+      <!-- Different methods for different actions -->
+      <button type="button" class="btn-cancel" (click)="onCancel()">Cancel</button>
+      <button type="button" class="btn-yes" [disabled]="editForm.invalid" (click)="onSave()">
+        Add Task
+      </button>
+    </div>
+  </div>
+</dialog>

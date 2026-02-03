@@ -1,0 +1,45 @@
+.dialog-overlay {
+  /* Cover the entire screen fixed position */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  border: none;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 1000; /* Ensure it's on top of everything else */
+}
+
+.dialog-box {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  text-align: center;
+}
+
+.dialog-message {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.dialog-actions button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.btn-yes {
+  background-color: #d9534f; /* Red color for delete action */
+  color: white;
+}

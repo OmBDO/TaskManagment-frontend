@@ -1,0 +1,222 @@
+.main-container-task-detail img {
+  padding: 20px;
+  cursor: pointer;
+}
+
+.task-container {
+  padding: 30px;
+}
+/* Header & Title */
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 16px;
+}
+
+h3 {
+  color: #888;
+  font-weight: 300;
+}
+
+#myDropdown {
+  transform: translateX(-50%);
+}
+.task-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 16px 0;
+}
+
+.header-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Badges (Priority, Status, Tags) */
+.priority-badge,
+.status-badge,
+.tag-badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.priority-badge.medium {
+  background-color: #e0f2fe; /* Light blue */
+  color: #0288d1; /* Blue */
+}
+
+.status-badge.planning {
+  background-color: #e8f5e9; /* Light green */
+  color: #2e7d32; /* Green */
+}
+.status-badge.planning::before {
+  content: '•';
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+.tag-badge {
+  background-color: #f1f3f5;
+  color: #555;
+  margin-right: 8px;
+}
+
+/* Avatars & Following */
+.following {
+  display: flex;
+  align-items: center;
+}
+
+.following p {
+  font-size: 14px;
+  color: #888;
+  margin-right: 12px;
+}
+
+.avatar-stack {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  background-color: #ccc; /* Placeholder for image */
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-left: -10px;
+}
+.avatar:first-child {
+  margin-left: 0;
+  z-index: 2;
+}
+.avatar:nth-child(2) {
+  z-index: 1;
+}
+
+.plus-icon {
+  margin-left: 10px;
+  font-size: 18px;
+  color: #888;
+}
+
+/* Grid Layout for Details */
+.task-details-grid {
+  display: grid;
+  /* Two columns: one auto-width for labels, one flexible for content */
+  grid-template-columns: auto 1fr;
+  gap: 16px 20px;
+  align-items: center;
+  font-size: 14px;
+  color: #444;
+}
+
+.grid-label {
+  color: #888;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 18px;
+  margin-right: 8px;
+  color: #aaa;
+}
+
+/* Assignees List */
+.assignees-list {
+  display: flex;
+  align-items: center;
+}
+
+.assignee-badge {
+  display: flex;
+  align-items: center;
+  background-color: #f1f3f5;
+  padding: 4px 12px 4px 4px;
+  border-radius: 20px;
+  margin-right: 8px;
+}
+
+.avatar-small {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.plus-assignee {
+  font-size: 16px;
+  color: #888;
+  cursor: pointer;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Container for the button and dropdown menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* The actual button style */
+.dropbtn {
+  background-color: #f1f1f1; /* Light grey background */
+  color: #333; /* Darker text for contrast */
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Change button background on hover */
+.dropbtn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Dropdown menu content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff; /* White background for the menu */
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); /* Clear shadow for depth */
+  z-index: 1;
+  border-radius: 4px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu (add this class with JavaScript) */
+.show {
+  display: block;
+}

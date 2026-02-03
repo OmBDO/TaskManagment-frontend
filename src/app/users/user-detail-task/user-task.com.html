@@ -1,0 +1,38 @@
+<div class="user-task-container">
+  <div class="header-section">
+    <img
+      src="../../../assets/image/icons/arrow-left.svg"
+      alt="back"
+      class="back-btn"
+      (click)="onNavigateBack()"
+    />
+    <div class="user-status-container">
+      <h2>{{ userDetail()?.firstName ?? 'User' }}'s Tasks</h2>
+      <div class="status-bar">
+        <app-user-status-bar
+          [pending]="getReportCount('Pending')"
+          [inProgress]="getReportCount('InProgress')"
+          [completed]="getReportCount('Completed')"
+        ></app-user-status-bar>
+      </div>
+    </div>
+  </div>
+
+  <div class="task-grid">
+    @for (task of userTasks(); track task.taskId) {
+      <div class="task-card" (click)="onNavigatetoTask(task)">
+        <div class="task-header">
+          <h3>{{ task.title }}</h3>
+          <span class="status-badge" [attr.data-status]="task.status">
+            {{ task.status }}
+          </span>
+        </div>
+        <p class="task-desc">{{ task.description }}</p>
+      </div>
+    } @empty {
+      <div class="no-tasks">
+        <p>No tasks found for this user.</p>
+      </div>
+    }
+  </div>
+</div>

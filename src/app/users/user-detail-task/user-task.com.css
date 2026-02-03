@@ -1,0 +1,72 @@
+.user-task-container {
+  padding: 20px;
+}
+
+.user-status-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-status-container .status-bar {
+  width: 300px;
+}
+.user-task-container img {
+  cursor: pointer;
+}
+.user-task-container h2 {
+  font-weight: 500;
+  font-size: 30px;
+  color: rgb(61, 61, 61);
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 0 0;
+}
+
+.task-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  border: 1px solid #eee;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+}
+
+.task-header h3 {
+  font-weight: 500;
+  font-size: 30px;
+  color: rgb(92, 92, 92);
+}
+.status-badge {
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: #fcb7a2;
+}
+
+.status-badge.completed {
+  background: #fcb7a2;
+  color: #155724;
+}
+
+.task-desc {
+  color: rgb(138, 137, 137);
+}
+
+/* Media Query */
+
+@media (max-width: 608px) {
+  .user-status-container .status-bar {
+    width: 200px;
+  }
+}

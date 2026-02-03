@@ -1,0 +1,109 @@
+<!-- task frame -->
+<div class="task-section">
+  <!-- search bar - sort --------------- Task Button -->
+  <app-user-task-header></app-user-task-header>
+
+  <div class="task-frame-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Users</th>
+          <th>Tasks</th>
+          <th>
+            <div>
+              <!-- <img
+                (click)="sortByFieldHandler('dueDate')"
+                src="../../assets/image/icons/switch-vertical.svg"
+                alt=""
+              /> -->
+              Due Date
+            </div>
+          </th>
+          <!-- <th>
+            <div>
+              <img src="../../assets/image/icons/switch-vertical.svg" alt="" />
+              Projects
+            </div>
+          </th> -->
+          <th>
+            <div>
+              <!-- <img
+                src="../../assets/image/icons/switch-vertical.svg"
+                alt=""
+                (click)="sortByFieldHandler('priority')"
+              /> -->
+              Priority
+            </div>
+          </th>
+          <th>
+            <div>
+              <!-- <img
+                src="../../assets/image/icons/switch-vertical.svg"
+                alt=""
+                (click)="sortByFieldHandler('status')"
+              /> -->
+              Stage
+            </div>
+          </th>
+          <!-- @if (currentUser()?.roles?.includes(RoleEnum.Administrator.toString()) ?? false) {
+              <th class="option-cell">
+                <div>Options</div>
+              </th>
+            } -->
+        </tr>
+      </thead>
+      @if (tasks().length != 0) {
+        <tbody>
+          @for (task of tasks(); track task.taskId) {
+            <tr
+              [class]="PriorityEnum[task.priority]"
+              app-user-task
+              [task]="task"
+              [ngClass]="{ critical: isPastDue(task.dueDate, task.isCompleted) }"
+            ></tr>
+          }
+        </tbody>
+      } @else {
+        <p>No Task Found....!</p>
+      }
+    </table>
+
+    <div class="pagination-container">
+      <!-- Previous Button -->
+      <button class="pagination-btn" (click)="onPrev()" [disabled]="!pagination().isPrevious">
+        Previous
+      </button>
+
+      <div class="page-number active">
+        {{ pagination().currentPage }}
+      </div>
+
+      <div
+        class="page-number"
+        [class.hide]="pagination().currentPage === pagination().totalPages"
+        (click)="onNext()"
+      >
+        {{ pagination().currentPage + 1 }}
+      </div>
+
+      <div
+        class="page-number dots"
+        [class.hide]="pagination().currentPage >= pagination().totalPages - 2"
+      >
+        ...
+      </div>
+
+      <div
+        class="page-number total"
+        [class.hide]="pagination().currentPage >= pagination().totalPages - 1"
+        [class.active]="pagination().currentPage === pagination().totalPages"
+      >
+        {{ pagination().totalPages }}
+      </div>
+
+      <button class="pagination-btn" (click)="onNext()" [disabled]="!pagination().isNext">
+        Next
+      </button>
+    </div>
+  </div>
+</div>

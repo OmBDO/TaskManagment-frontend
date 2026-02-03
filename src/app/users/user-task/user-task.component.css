@@ -1,0 +1,84 @@
+td {
+  border-bottom: white 20px solid;
+  font-weight: 100;
+  color: #727272;
+  border-spacing: 0;
+
+  /* display: flex; */
+}
+
+td div {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+td span {
+  align-items: center;
+  justify-content: center;
+  padding-right: 7px;
+}
+
+.priority-container p {
+  padding: 10px 20px;
+  /* background-color: #333333; */
+  border-radius: 10%;
+  text-overflow: ellipsis;
+}
+
+p.critical {
+  background-color: #ffebee;
+}
+
+p.high {
+  background-color: #fff3e0;
+}
+
+p.medium {
+  background-color: #fffde7;
+}
+
+p.low {
+  background-color: #e8f5e9;
+}
+
+.options-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.task-option-popup {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-left: 0px;
+
+  background-color: white;
+  z-index: 1;
+}
+
+.status-container {
+  width: 90%;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+select {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+  display: flex;
+}
+
+select option {
+  border: none;
+  outline: none;
+}
+
+.userTask {
+  cursor: pointer;
+}
+
+.userTask:hover {
+  background-color: ghostwhite;
+}

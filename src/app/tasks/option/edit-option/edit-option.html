@@ -1,0 +1,65 @@
+<dialog class="dialog-overlay" open>
+  <div class="dialog-box">
+    <p class="dialog-message">Edit Task</p>
+    <form class="form" #editForm="ngForm">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        [(ngModel)]="taskModel.title"
+        #title="ngModel"
+        required
+      />
+      @if (title.invalid && title.touched) {
+        <small class="error">Title is required.</small>
+      }
+      <label for="title">Description</label>
+      <input
+        type="text"
+        id="description"
+        name="description"
+        [(ngModel)]="taskModel.description"
+        #description="ngModel"
+        required
+      />
+
+      @if (description.invalid && description.touched) {
+        <small class="error">Description is required.</small>
+      }
+      <label for="dueDate">Due Date</label>
+      <input
+        type="date"
+        id="dueDate"
+        name="dueDate"
+        [min]="minDate"
+        [(ngModel)]="taskModel.dueDate"
+        #date="ngModel"
+        required
+      />
+
+      <label for="priority">Priority</label>
+      <select id="priority" name="priority" [(ngModel)]="taskModel.priority" required>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+        <option value="Critical">Critical</option>
+      </select>
+
+      <label for="status">Status</label>
+      <select id="status" name="status" [(ngModel)]="taskModel.status" required>
+        @for (item of statuses; track item) {
+          <option [value]="item">{{ StatusEnum[item] }}</option>
+        }
+      </select>
+
+      <div class="dialog-actions">
+        <button type="button" class="btn-cancel" (click)="onCancel()">Cancel</button>
+        <!-- Disable button if any required field is empty/invalid -->
+        <button type="submit" class="btn-yes" [disabled]="editForm.invalid" (click)="onSave()">
+          Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+</dialog>

@@ -1,0 +1,19 @@
+<div class="task-header">
+  <div class="task-header-left">
+    <div class="task-search">
+      <input type="text" #titleInput id="title-search" placeholder="Search tasks..." />
+      <img src="../../../assets/image/icons/search.svg" alt="" (click)="onSearchByTitle()" />
+    </div>
+    <div class="sort-button" (click)="onSortById()">
+      <img src="../../assets/image/icons/switch-vertical.svg" alt="" />
+      <h3>Sort</h3>
+    </div>
+  </div>
+  <!--   -->
+  <!-- <div class="task-header-right" (click)="onAddTask()">
+    <p>+</p>
+    <button class="add-task-btn">Task</button>
+  </div> -->
+</div>
+
+<router-outlet> </router-outlet>

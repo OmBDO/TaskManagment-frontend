@@ -1,0 +1,35 @@
+<header class="dashboard-header">
+  <div class="header-one">
+    <div class="header-left">
+      <div class="user-profile" (click)="onProfileClick($event)">
+        @if (currentUser(); as user) {
+          <span class="avatar">{{ user().firstName[0] }}</span>
+          <h1>{{ user().firstName + ' ' + user().lastName }}</h1>
+        } @else {
+          <span class="avatar">?</span>
+          <h1>Loading...</h1>
+        }
+        @if (isProfileOption) {
+          <app-profile-option></app-profile-option>
+        }
+      </div>
+    </div>
+
+    <div class="header-right">
+      <div class="search-container">
+        <input type="text" placeholder="Search..." />
+      </div>
+    </div>
+  </div>
+  <div class="header-two">
+    <nav class="main-nav">
+      <ul>
+        @for (item of navItems; track $index) {
+          <li [ngClass]="{ active: item.label == activeItem.label }" (click)="setActive(item)">
+            <a [routerLink]="[item.link]">{{ item.label }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

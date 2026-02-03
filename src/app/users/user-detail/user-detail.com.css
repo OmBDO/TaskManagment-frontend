@@ -1,0 +1,130 @@
+.profile-section-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 40px auto;
+  max-width: 100%;
+}
+
+.profile-section-container .navigator {
+  display: flex;
+  cursor: pointer;
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.profile-section-container .navigator:hover {
+  transform: translateX(-2px);
+  transition: all 0.5s;
+}
+
+.profile-section-container .navigator img {
+  width: 25px;
+}
+
+/* Container Layout */
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 2rem;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Card Styling */
+.profile-summary,
+.profile-details {
+  background: #ffffff;
+  border-radius: 16px;
+  /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); */
+  padding: 2rem;
+  /* height: 100%;   */
+  /* width: 100%; */
+  border: 1px solid #f0f0f0;
+}
+
+/* Sidebar - User Summary */
+.profile-summary {
+  text-align: center;
+  height: auto;
+}
+
+.avatar-circle {
+  width: 100px;
+  height: 100px;
+  background-color: #ff5858;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+}
+
+.user-fullname {
+  font-size: 1.5rem;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.badge-role {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #eef2ff;
+  color: #ff5858;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Main Content - Details Grid */
+.details-section h3 {
+  font-size: 1.2rem;
+  color: #334155;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 0.5rem;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.field-group label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.field-value {
+  font-size: 1rem;
+  color: #1e293b;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-container {
+    grid-template-columns: 1fr;
+  }
+}

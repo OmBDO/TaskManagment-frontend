@@ -1,0 +1,17 @@
+<div class="bar-container">
+  <div class="progress-track">
+    @if (pending() + inProgress() + completed() > 0) {
+      <div class="seg pending" [style.flex-basis.%]="ratios().p"></div>
+      <div class="seg in-progress" [style.flex-basis.%]="ratios().i"></div>
+      <div class="seg completed" [style.flex-basis.%]="ratios().c"></div>
+    } @else {
+      <div class="seg empty" style="flex-basis: 100%"></div>
+    }
+  </div>
+
+  <div class="labels">
+    <span>Pending: {{ pending() }}</span>
+    <span>In Progress: {{ inProgress() }}</span>
+    <span>Completed: {{ completed() }}</span>
+  </div>
+</div>

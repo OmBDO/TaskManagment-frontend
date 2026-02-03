@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com');
+
+/* Apply it to your elements */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+::view-transition-old(root) {
+  animation: 0.3s ease-out both fade-out; /* Current page fades out */
+}
+::view-transition-new(root) {
+  animation: 0.3s ease-in both fade-in; /* New page fades in */
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

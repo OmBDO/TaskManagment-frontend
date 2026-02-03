@@ -1,0 +1,36 @@
+<div class="profile-section-container">
+  <div class="navigator" (click)="onNavigateBack()">
+    <img src="../../../assets/image/icons/arrow-left.svg" alt="" />
+    <p>Home</p>
+  </div>
+
+  <div class="profile-container">
+    <aside class="profile-summary">
+      <div class="avatar-circle">{{ userService.currentUser().firstName[0] }}</div>
+      <h2 class="user-fullname">
+        {{ userService.currentUser().firstName + ' ' + userService.currentUser().lastName }}
+      </h2>
+      <span class="badge-role">{{ role().toString() }}</span>
+    </aside>
+
+    <main class="profile-details">
+      <section class="details-section">
+        <h3>Account Details</h3>
+        <div class="details-grid">
+          <div class="field-group">
+            <label>First Name</label>
+            <div class="field-value">{{ userService.currentUser().firstName }}</div>
+          </div>
+          <div class="field-group">
+            <label>Last Name</label>
+            <div class="field-value">{{ userService.currentUser().lastName }}</div>
+          </div>
+          <div class="field-group full-width">
+            <label>Email Address</label>
+            <div class="field-value">{{ userService.currentUser().email }}</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
