@@ -4,19 +4,20 @@ import { AuthService } from '../../auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Task, TaskStatus } from '../task.model';
 import { TaskServices } from '../tasks.service';
+import { User } from '../../users/user.model';
 
 @Component({
   selector: 'app-task-detail',
   templateUrl: './task-detail.com.html',
   styleUrl: './task-detail.com.css',
 })
-export class TaskDetailComponent {
+export class TaskDetailComponent implements OnInit {
   taskId = input<number>();
   private router = inject(Router);
   private userService = inject(UserService);
   private taskService = inject(TaskServices);
   private route = inject(ActivatedRoute);
-  userDetail = computed(() => this.userService.currentUser());
+  userDetail = computed(() => this.userService.getSelectedUserDetail(this.taskDetail.userId));
   taskDetail!: Task;
 
   StatusEnum = TaskStatus;
@@ -24,13 +25,12 @@ export class TaskDetailComponent {
   currentStatus = '';
 
   constructor() {
-    // const navigation = this.router.currentNavigation();
-
     const taskJson = this.route.snapshot.queryParamMap.get('task');
     if (taskJson) {
       this.taskDetail = JSON.parse(taskJson);
     }
   }
+  ngOnInit(): void {}
 
   convertDateFormat() {
     const date = new Date(this.taskDetail.dueDate);

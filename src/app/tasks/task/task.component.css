@@ -49,7 +49,7 @@ p.low {
 
 .task-option-popup {
   position: absolute;
-  left: 0;
+  left: -30px;
   top: 0;
   margin-left: 0px;
   background-color: white;
@@ -77,6 +77,7 @@ select option {
 
 .title-select-container {
   cursor: pointer;
+  max-width: 500px;
 }
 
 .title-select-container:hover {
@@ -85,4 +86,16 @@ select option {
 
 .title-select-container:active {
   background-color: rgb(216, 216, 221);
+}
+
+td.title-select-container div.p-title {
+  max-width: 100%;
+  line-height: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.date-line {
+  white-space: pre-line;
+  display: block; /* Ensures the container respects the line break */
+  line-height: 1.5;
 }

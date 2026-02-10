@@ -1,12 +1,16 @@
 <td class="title-select-container" (click)="onTaskDetailNavigate()">
-  <div>
+  <div class="p-title">
     <span [innerHTML]="onStatus()"></span>
 
-    {{ task().title }}
+    <p class="">
+      {{ task().title }}
+    </p>
   </div>
 </td>
 <td>
-  {{ task().dueDate | relativeDate }}
+  <p class="date-line">
+    {{ task().dueDate | relativeDate }}
+  </p>
 </td>
 <!-- <td>
   <span><img src="../../../assets/image/icons/navigate.svg" alt="" /></span>{{ task().project }}

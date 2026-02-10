@@ -1,0 +1,99 @@
+.filter-container {
+  /* width: 200px; */
+  /* height: 200px; */
+  background-color: aliceblue;
+}
+
+.filter-container {
+  width: 260px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  font-family: 'Inter', sans-serif;
+  border: 1px solid #f0f0f0;
+}
+
+.filter-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+h4 {
+  margin: 0;
+  padding: 10px 0px;
+  color: #ff6b6b;
+}
+
+button {
+  background-color: #ff6b6b;
+  border-radius: 10px;
+  padding: 10px 5px;
+  outline: none;
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.filter-cancel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-cancel img {
+  width: 30px;
+  height: 30px;
+}
+
+button:hover {
+  background-color: #ff5e5e;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: -10px; /* Brings label closer to input */
+}
+
+input,
+select {
+  width: 93%;
+  padding: 12px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #333;
+  transition: all 0.2s ease;
+  background-color: #fafafa;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}

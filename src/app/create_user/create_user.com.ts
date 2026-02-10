@@ -57,7 +57,6 @@ export class CreateUserComponent {
       const newUser = this.userForm.value as RegisterUser;
       this.userService.createUserAsync(newUser).subscribe({
         next: (res) => {
-          console.log('hello world');
           this.userService.usersDetail.update((old) => [
             ...old,
             {
@@ -65,6 +64,8 @@ export class CreateUserComponent {
               email: res.email,
               firstName: res.firstName,
               lastName: res.lastName,
+              roles: res.role,
+              task: null,
             },
           ]);
           this.onRegisterDoneDialog();

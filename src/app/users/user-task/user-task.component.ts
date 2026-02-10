@@ -27,7 +27,7 @@ export class UserTaskComponent {
 
   statusOption = [TaskStatus.Completed, TaskStatus.InProgress, TaskStatus.Pending];
   onStatus(): string {
-    const status = this.task().status;
+    const status = this.task().task?.status ?? Priority.Low;
     let htmlOutput = '';
 
     switch (status) {
@@ -62,7 +62,7 @@ export class UserTaskComponent {
         status: this.StatusEnum[action as keyof typeof this.StatusEnum],
         isCompleted: TaskStatus.Completed.toString() == action,
       };
-      this.taskService.editTask(currentTask.taskId, updatedData);
+      // this.taskService.editTask(currentTask.task.taskId, ]);
     } else {
       console.error(`Invalid status action: ${action}`);
     }

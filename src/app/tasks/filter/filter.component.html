@@ -1,0 +1,30 @@
+<div class="filter-container" (click)="$event.stopPropagation()">
+  <div class="filter-cancel">
+    <h4>Filter</h4>
+    <img src="../../../assets/image/icons/cancel.svg" alt="" />
+  </div>
+
+  <form action="">
+    <label for="dueDate">Due Date</label>
+    <input type="date" id="dueDate" [(ngModel)]="taskModel.dueDate" name="dueDate" required />
+    <label for="priority">Priority</label>
+    <select id="priority" [(ngModel)]="taskModel.priority" name="priority">
+      <option value="">Select</option>
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+      <option value="critical">Critical</option>
+    </select>
+
+    <label for="status">Status</label>
+    <select id="status" [(ngModel)]="taskModel.status" name="status">
+      <option value="">Select</option>
+
+      @for (item of statuses; track item) {
+        <option [value]="item.toString()">{{ StatusEnum[item] }}</option>
+      }
+    </select>
+
+    <button (click)="onSumbit()">Add</button>
+  </form>
+</div>

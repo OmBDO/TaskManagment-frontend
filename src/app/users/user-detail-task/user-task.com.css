@@ -31,7 +31,7 @@
 .task-card {
   background: white;
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1rem;
   /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   border: 1px solid #eee;
   transition: transform 0.2s;
@@ -42,9 +42,23 @@
   transform: translateY(-5px);
 }
 
+.task-header {
+  padding-bottom: 8px;
+  border-bottom: 1px #e5e2e2 solid;
+}
 .task-header h3 {
-  font-weight: 500;
-  font-size: 30px;
+  font-weight: 300;
+  font-size: 25px;
+  margin: 0px;
+  margin-bottom: 10px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+  display: block;
+  max-width: 100%;
+
   color: rgb(92, 92, 92);
 }
 .status-badge {

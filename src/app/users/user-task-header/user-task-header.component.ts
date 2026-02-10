@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, output, ViewChild } from '@angular/core';
 
 import { Router, RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
@@ -14,6 +14,7 @@ export class UserTaskHeaderComponet {
   private taskService = inject(TaskServices);
   private router = inject(Router);
   @ViewChild('titleInput') searchInput!: ElementRef<HTMLInputElement>;
+  onSearch = output<string>();
   isDescending = false;
   isOption = false;
   onSortById() {
@@ -27,7 +28,7 @@ export class UserTaskHeaderComponet {
 
   onSearchByTitle() {
     const title = this.searchInput.nativeElement.value;
-    this.taskService.searchByTitle(title);
+    this.onSearch.emit(title);
   }
 
   onAddTask() {

@@ -5,33 +5,39 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'relativeDate',
   standalone: true,
 })
+
+// value | relativeDate
 export class RelativeDatePipe implements PipeTransform {
   transform(value: string | Date): string | null {
     if (!value) return null;
 
     const date = new Date(value);
     const today = new Date();
-    const tomorrow = new Date();
-    tomorrow.setDate(today.getDate() + 1);
 
-    // Normalize dates to remove time part for accurate day comparison
     const normDate = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
     const normToday = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
-    const normTomorrow = new Date(
-      tomorrow.getFullYear(),
-      tomorrow.getMonth(),
-      tomorrow.getDate(),
-    ).getTime();
 
-    if (normDate === normToday) {
+    const diffTime = normDate - normToday;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    const datePipe = new DatePipe('en-US');
+    const formattedDate = datePipe.transform(date, 'dd MMMM');
+
+    if (diffDays === 0) {
       return 'Today';
-    } else if (normDate === normTomorrow) {
-      return 'Tomorrow';
-    } else {
-      // Use Angular's built-in DatePipe for other dates (e.g., "11 July")
-      // The format 'dd MMMM' gives the day and full month name.
-      const datePipe = new DatePipe('en-US');
-      return datePipe.transform(date, 'dd MMMM');
     }
+
+    if (diffDays === 1) {
+      return 'Tomorrow';
+    }
+
+    if (diffDays < 0) {
+      return `${formattedDate} \n(Overdue)`;
+    }
+
+    if (diffDays > 1) {
+      return `${formattedDate} \n(${diffDays} days left)`;
+    }
+    return formattedDate;
   }
 }

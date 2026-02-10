@@ -3,6 +3,7 @@ import { Task, TaskStatus } from '../../task.model';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TaskServices } from '../../tasks.service';
+import { UserService } from '../../../users/user.service';
 
 @Component({
   selector: 'app-task-edit-dialog',
@@ -13,7 +14,8 @@ import { TaskServices } from '../../tasks.service';
 export class TaskEditDialogComponent implements OnInit {
   private taskService = inject(TaskServices);
   private router = inject(Router);
-
+  private userService = inject(UserService);
+  usersDetail = this.userService.usersDetail;
   StatusEnum = TaskStatus;
   readonly statuses: TaskStatus[] = [
     TaskStatus.Pending,
@@ -31,6 +33,7 @@ export class TaskEditDialogComponent implements OnInit {
     if (state && state.data) {
       this.taskModel = JSON.parse(JSON.stringify(state.data));
     }
+    this.userService.usersDetailAsync();
   }
 
   ngOnInit() {

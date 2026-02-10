@@ -53,6 +53,13 @@
         }
       </select>
 
+      <label for="users">Users</label>
+      <select id="users" [(ngModel)]="taskModel.userId" name="users" required>
+        @for (user of usersDetail(); track user.id) {
+          <option [value]="user.id">{{ user.firstName + ' ' + user.lastName }}</option>
+        }
+      </select>
+
       <div class="dialog-actions">
         <button type="button" class="btn-cancel" (click)="onCancel()">Cancel</button>
         <!-- Disable button if any required field is empty/invalid -->

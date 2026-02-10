@@ -1,55 +1,95 @@
 <!-- task frame -->
 <div class="task-section">
   <!-- search bar - sort --------------- Task Button -->
-  <app-user-task-header></app-user-task-header>
+  <app-user-task-header (onSearch)="onSearch($event)"></app-user-task-header>
 
-  <div class="task-frame-table">
-    <table>
+  @if (!AdminUsers().length && !NormUsers().length) {
+    <div class="center-p">
+      <p>No User Found...!</p>
+    </div>
+  }
+  <div>
+    @if (AdminUsers().length) {
+      <h3 class="user-tag">Admins</h3>
+    }
+    <div class="grid-user-task-container">
+      @for (item of AdminUsers(); track $index) {
+        <div class="user-task-card" (click)="onSelectedUser(item.id)">
+          <h2 class="user-name">{{ item.firstName }} {{ item.lastName }}</h2>
+          @if (item.task) {
+            <div class="task-container">
+              <div class="title-date">
+                <p class="task-title">{{ item.task.title }}</p>
+                <p class="date">{{ item.task.dueDate | relativeDate }}</p>
+              </div>
+              <div class="task-status-badge">
+                <p class="status" [ngClass]="item.task.status">
+                  {{ item.task.status }}
+                </p>
+                <p>
+                  {{ item.task.priority }}
+                </p>
+              </div>
+            </div>
+          } @else {
+            <p class="no-task">No Task Assigned</p>
+          }
+        </div>
+      }
+    </div>
+    @if (NormUsers().length) {
+      <h3 class="user-tag">Users</h3>
+    }
+
+    <div class="grid-user-task-container">
+      @for (item of NormUsers(); track $index) {
+        <div class="user-task-card" (click)="onSelectedUser(item.id)">
+          <h2 class="user-name">{{ item.firstName }} {{ item.lastName }}</h2>
+
+          @if (item.task?.title ?? '') {
+            <div class="task-container">
+              <div class="title-date">
+                <p class="task-title">{{ item.task?.title ?? '' }}</p>
+                <p class="date">{{ item.task?.dueDate ?? '' | relativeDate }}</p>
+              </div>
+              <div class="task-status-badge">
+                <p class="status" [ngClass]="item.task?.status">
+                  {{ item.task?.status ?? '' }}
+                </p>
+                <p>
+                  {{ item.task?.priority ?? PriorityEnum.Low }}
+                </p>
+              </div>
+            </div>
+          } @else {
+            <p class="no-task">No Task Assigned</p>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>
+
+<!-- 
+  <table>
       <thead>
         <tr>
           <th>Users</th>
           <th>Tasks</th>
           <th>
             <div>
-              <!-- <img
-                (click)="sortByFieldHandler('dueDate')"
-                src="../../assets/image/icons/switch-vertical.svg"
-                alt=""
-              /> -->
+            
               Due Date
             </div>
           </th>
-          <!-- <th>
-            <div>
-              <img src="../../assets/image/icons/switch-vertical.svg" alt="" />
-              Projects
-            </div>
-          </th> -->
+        
           <th>
             <div>
-              <!-- <img
-                src="../../assets/image/icons/switch-vertical.svg"
-                alt=""
-                (click)="sortByFieldHandler('priority')"
-              /> -->
+             
               Priority
             </div>
           </th>
-          <th>
-            <div>
-              <!-- <img
-                src="../../assets/image/icons/switch-vertical.svg"
-                alt=""
-                (click)="sortByFieldHandler('status')"
-              /> -->
-              Stage
-            </div>
-          </th>
-          <!-- @if (currentUser()?.roles?.includes(RoleEnum.Administrator.toString()) ?? false) {
-              <th class="option-cell">
-                <div>Options</div>
-              </th>
-            } -->
+
         </tr>
       </thead>
       @if (tasks().length != 0) {
@@ -66,10 +106,11 @@
       } @else {
         <p>No Task Found....!</p>
       }
-    </table>
+    </table> -->
 
+<!-- <div class="task-frame-table">
     <div class="pagination-container">
-      <!-- Previous Button -->
+    
       <button class="pagination-btn" (click)="onPrev()" [disabled]="!pagination().isPrevious">
         Previous
       </button>
@@ -105,5 +146,4 @@
         Next
       </button>
     </div>
-  </div>
-</div>
+  </div> -->

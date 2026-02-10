@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DestroyRef, inject, Injectable, signal } from '@angular/core';
 import { AppConstant } from '../../core/constant/app_constants';
-import { RegisteredUser, RegisterUser, User } from './user.model';
+import { RegisteredUser, RegisterUser, User, UserTask } from './user.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Task } from '../tasks/task.model';
 import { catchError, throwError } from 'rxjs';
@@ -12,9 +12,9 @@ import { catchError, throwError } from 'rxjs';
 export class UserService {
   private httpClient = inject(HttpClient);
   private disposeRef = inject(DestroyRef);
-  usersDetail = signal<User[]>([]);
+  usersDetail = signal<UserTask[]>([]);
   usersTask = signal<Task[]>([]);
-  currentUser = signal<User>({ email: '', id: '', firstName: '', lastName: '' });
+  currentUser = signal<User>({ email: '', id: '', firstName: '', lastName: '', roles: 'User' });
 
   getUserDetailAsync(userId: string) {
     this.httpClient
@@ -31,7 +31,8 @@ export class UserService {
       return;
     }
     this.httpClient
-      .get<User[]>(AppConstant.getUsersDetail)
+      .get<UserTask[]>(AppConstant.getUsersDetail)
+
       .pipe(takeUntilDestroyed(this.disposeRef))
 
       .subscribe({
@@ -40,12 +41,27 @@ export class UserService {
       });
   }
 
+  patchLoclTskOnUsrPage(userId: string, taskId: number, updatedTaskData: Task) {
+    this.usersDetail.update((users) =>
+      users.map((user) => {
+        if (user.id === userId && user.task?.taskId === taskId) {
+          return {
+            ...user,
+            task: { ...updatedTaskData, taskId: taskId },
+          };
+        }
+        return user;
+      }),
+    );
+  }
+
   getSelectedUserDetail(userId: string) {
     if (this.usersDetail().length == 0) {
       this.usersDetailAsync();
     }
-
-    return this.usersDetail().find((user) => user.id === userId);
+    const user = this.usersDetail().find((user) => user.id === userId);
+    if (user == null) return null;
+    return user;
   }
 
   createUserAsync(credential: RegisterUser) {
@@ -66,6 +82,6 @@ export class UserService {
   }
 
   removeCurrentUser() {
-    this.currentUser.set({ email: '', id: '', firstName: '', lastName: '' });
+    this.currentUser.set({ email: '', id: '', firstName: '', lastName: '', roles: '' });
   }
 }
