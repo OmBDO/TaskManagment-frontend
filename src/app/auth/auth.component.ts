@@ -90,7 +90,7 @@ export class AuthComponent {
         password: this.registerForm.value.password!,
         firstName: this.registerForm.value.firstname!,
         lastName: this.registerForm.value.lastname!,
-        role: this.registerForm.value.role?.toLowerCase() ?? 'User',
+        role: this.registerForm.value.role ?? 'User',
       };
 
       console.log(credentials);

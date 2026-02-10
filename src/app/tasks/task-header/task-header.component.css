@@ -50,7 +50,7 @@
 .task-header-right {
   display: flex;
   flex-direction: row;
-  gap: 5px;
+  gap: 3px;
 }
 .task-header-right p {
   font-size: 30px;
@@ -65,13 +65,15 @@
   justify-content: center;
   width: 30px;
   height: 30px;
-  border-radius: 30%;
+  border-top-left-radius: 30%;
+  border-bottom-left-radius: 30%;
 }
 .task-header-right button {
   background-color: #ff5858;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   width: 90px;
   height: 30px;
   font-size: 16px;
@@ -90,4 +92,37 @@
 
 .task-search img {
   cursor: pointer;
+}
+
+.action-task-triggers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.filter-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  border-radius: 0.3rem;
+  padding: 5px 20px;
+  cursor: pointer;
+  position: relative;
+}
+.filter-btn p {
+  margin: 0;
+}
+
+.filter-btn:hover {
+  background-color: #f3f2f2;
+}
+
+.filter-popup {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 300000;
 }

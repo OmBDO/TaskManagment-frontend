@@ -13,9 +13,9 @@ export class AppConstant {
   static deleteTask = (taskId: number) => this.baseurl + '/Tasks/' + taskId;
 
   // User
-  static postUser = this.baseurl + '/User/create';
+  static postUser = this.baseurl + '/User';
   static getUsersName = this.baseurl + '/User/names';
-  static getUsersDetail = this.baseurl + '/User/all';
-  static getUserDetail = (userId: string) => this.baseurl + '/User/detail/' + userId;
+  static getUsersDetail = this.baseurl + '/User';
+  static getUserDetail = (userId: string) => this.baseurl + '/User/' + userId;
   static getUserTasks = (userId: string) => this.baseurl + '/User/' + userId + '/tasks';
 }

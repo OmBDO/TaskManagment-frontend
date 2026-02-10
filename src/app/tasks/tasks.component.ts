@@ -21,8 +21,9 @@ export class TasksComponent implements OnInit {
   currentUser = this.authService.authUser;
   PriorityEnum = Priority;
   RoleEnum = UserRole;
-  isDescending = false;
+  isDescending = signal<boolean>(false);
   isGridOn = signal(false);
+
   ngOnInit(): void {
     if (this.tasks().length === 0) {
       this.taskService.fetchTask();
@@ -41,11 +42,11 @@ export class TasksComponent implements OnInit {
     this.taskService.currentPage.set(page);
   }
   sortByFieldHandler(field: keyof Task) {
-    this.taskService.sortByField(field, this.isDescending ? 'desc' : 'asc');
+    this.taskService.sortByField(field, this.isDescending() ? 'desc' : 'asc');
     this.sortDescending();
   }
   sortDescending() {
-    this.isDescending = !this.isDescending;
+    this.isDescending.update((old) => !old);
   }
 
   onGirdOn() {

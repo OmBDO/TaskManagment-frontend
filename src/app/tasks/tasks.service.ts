@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { AppConstant } from '../../core/constant/app_constants';
 import { map } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { UserService } from '../users/user.service';
 // Define the interface based on your API response
 export interface TaskResponse {
   data: Task[];
@@ -23,21 +24,18 @@ export interface TaskResponse {
 export class TaskServices {
   private tasks = signal<Task[]>([]);
   private serverMeta = signal<TaskResponse['metaData'] | null>(null);
+  private fieldpr = signal<keyof Task>('taskId');
+  private isDescending = signal<boolean>(false);
 
   private httpClient = inject(HttpClient);
   private destroyRef = inject(DestroyRef);
+  private userService = inject(UserService);
   private pageSize = 8;
 
   currentPage = signal<number>(1);
   searchQuery = signal<string>('');
 
-  private fetchTaskAsync = (
-    pageNumber = 1,
-    isComplete?: boolean,
-    search?: string,
-    field?: keyof Task,
-    sortDescending?: boolean,
-  ) => {
+  private fetchTaskAsync = (pageNumber = 1, isComplete?: boolean, search?: string) => {
     const subscription = this.httpClient
       .get<TaskResponse>(AppConstant.getTask(), {
         params: {
@@ -45,8 +43,10 @@ export class TaskServices {
           pageNumber: pageNumber.toString(),
           ...(isComplete !== undefined && { isComplete: isComplete.toString() }),
           ...(search && { search: search.trim() }),
-          ...(field && { sortBy: field as string }),
-          ...(sortDescending !== undefined && { sortDescending: sortDescending.toString() }),
+          ...(this.fieldpr() && { sortBy: this.fieldpr() as string }),
+          ...(this.isDescending() !== undefined && {
+            sortDescending: this.isDescending().toString(),
+          }),
         },
       })
       .pipe(
@@ -104,6 +104,7 @@ export class TaskServices {
       .subscribe({
         next: () => {
           this.fetchTaskAsync(this.currentPage());
+          this.userService.patchLoclTskOnUsrPage(task.userId, taskId, task);
         },
         error: (err) => console.error('Update failed', err),
       });
@@ -169,6 +170,12 @@ export class TaskServices {
     }
   }
 
+  resetfields() {
+    this.isDescending.set(false);
+    this.fieldpr.set('taskId');
+    this.fetchTaskAsync(1);
+  }
+
   prevPage() {
     if (this.pageMeta().isPrevious) {
       this.fetchTaskAsync(this.currentPage() - 1);
@@ -182,9 +189,9 @@ export class TaskServices {
   }
 
   sortByField(field: keyof Task, direction: 'asc' | 'desc' = 'asc') {
-    const isDescending = direction === 'desc';
-
-    this.fetchTaskAsync(1, undefined, this.searchQuery(), field, isDescending);
+    this.isDescending.set(direction === 'desc');
+    this.fieldpr.set(field);
+    this.fetchTaskAsync(1, undefined, this.searchQuery());
   }
 
   removeLogoutTask() {

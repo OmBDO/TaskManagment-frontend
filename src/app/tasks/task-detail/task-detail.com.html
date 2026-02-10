@@ -1,15 +1,44 @@
 <div class="main-container-task-detail">
   <img src="../../../assets/image/icons/arrow-left.svg" alt="" (click)="navigatePop()" />
   <div class="task-container">
-    <header class="task-header">
-      <div>
-        <h1 class="task-title">{{ taskDetail.title }}</h1>
-        <div class="header-details">
-          <div class="priority-badge medium">{{ taskDetail.priority }}</div>
+    <div class="task-header">
+      <div class="user-task-header">
+        <div>
+          <h1 class="task-title">{{ taskDetail.title }}</h1>
+          <div class="header-details">
+            <div class="priority-badge medium">{{ taskDetail.priority }}</div>
+          </div>
+          <h3>{{ taskDetail.description }}</h3>
         </div>
-        <h3>{{ taskDetail.description }}</h3>
       </div>
 
+      <div class="task-details-grid">
+        <div class="grid-label">
+          <span class="mdi mdi-account-group-outline icon"></span> Assigned
+        </div>
+        <div class="grid-content assignees-list">
+          <div class="assignee-badge">
+            <div class="avatar-small">
+              {{ userDetail() != null ? userDetail()!.firstName[0] : '' }}
+            </div>
+            <span>{{
+              userDetail() != null ? userDetail()!.firstName + ' ' + userDetail()!.lastName : ''
+            }}</span>
+          </div>
+
+          <span class="mdi mdi-plus plus-assignee"></span>
+        </div>
+
+        <div class="grid-label"><span class="mdi mdi-calendar-outline icon"></span> Due date</div>
+        <div class="grid-content">{{ convertDateFormat() }}</div>
+
+        <div class="grid-label"><span class="mdi mdi-clock-outline icon"></span> Status</div>
+        <div class="grid-content">
+          <div class="status-badge planning">{{ taskDetail.status }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="task-trigger">
       <div class="dropdown">
         <button class="dropbtn" (click)="toggleDropdown()">Change Status</button>
 
@@ -18,28 +47,6 @@
           <a (click)="selectStatus('InProgress')">In Progress</a>
           <a (click)="selectStatus('Pending')">Pending</a>
         </div>
-      </div>
-    </header>
-
-    <div class="task-details-grid">
-      <div class="grid-label">
-        <span class="mdi mdi-account-group-outline icon"></span> Assigned
-      </div>
-      <div class="grid-content assignees-list">
-        <div class="assignee-badge">
-          <div class="avatar-small">{{ userDetail().firstName[0] }}</div>
-          <span>{{ userDetail().firstName + ' ' + userDetail().lastName }}</span>
-        </div>
-
-        <span class="mdi mdi-plus plus-assignee"></span>
-      </div>
-
-      <div class="grid-label"><span class="mdi mdi-calendar-outline icon"></span> Due date</div>
-      <div class="grid-content">{{ convertDateFormat() }}</div>
-
-      <div class="grid-label"><span class="mdi mdi-clock-outline icon"></span> Status</div>
-      <div class="grid-content">
-        <div class="status-badge planning">{{ taskDetail.status }}</div>
       </div>
     </div>
   </div>

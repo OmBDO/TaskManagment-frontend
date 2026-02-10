@@ -18,6 +18,7 @@ export const route: Routes = [
   {
     path: 'auth',
     component: AuthComponent,
+    title: 'TaskManagement | Login',
   },
   {
     path: 'home',

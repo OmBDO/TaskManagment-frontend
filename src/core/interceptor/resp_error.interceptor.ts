@@ -7,6 +7,13 @@ export const response_formatInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
+      if (error.status == 401) {
+        setTimeout(() => {
+          router.navigate(['/error', error.status, error.message]);
+        }, 2000);
+        return throwError(() => error.message);
+      }
+
       if (typeof error.error == 'string') {
         return throwError(() => error.error);
       }

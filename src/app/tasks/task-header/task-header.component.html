@@ -4,21 +4,29 @@
       <input type="text" #titleInput id="title-search" placeholder="Search tasks..." />
       <img src="../../../assets/image/icons/search.svg" alt="" (click)="onSearchByTitle()" />
     </div>
-    <div class="sort-button" (click)="onSortById()">
+    <div class="sort-button" (click)="onReset()">
       <img src="../../assets/image/icons/switch-vertical.svg" alt="" />
-      <h3>Sort</h3>
+      <h3>reset</h3>
     </div>
   </div>
-  <!--   -->
-  <!-- <div (click)="onToggleGridLines()">
-    <p>Toggle</p>
-  </div> -->
-  @if (roles()?.includes(RoleEnum.Administrator)) {
-    <div class="task-header-right" (click)="onAddTask()">
-      <p>+</p>
-      <button class="add-task-btn">Task</button>
-    </div>
-  }
+  <div class="action-task-triggers">
+    <!-- <div (click)="onFilter()" class="filter-btn">
+      <img src="../../../assets/image/icons/filter.svg" alt="" />
+      <p>Filter</p>
+      @if (isFilter) {
+        <app-task-filter-popup
+          (onClose)="onFilterClose()"
+          class="filter-popup"
+        ></app-task-filter-popup>
+      }
+    </div> -->
+    @if (roles()?.includes(RoleEnum.Administrator)) {
+      <div class="task-header-right" (click)="onAddTask()">
+        <p>+</p>
+        <button class="add-task-btn">Task</button>
+      </div>
+    }
+  </div>
 </div>
 
 <router-outlet> </router-outlet>

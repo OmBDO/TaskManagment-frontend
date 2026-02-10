@@ -87,6 +87,14 @@
   cursor: pointer;
 }
 
+input[type='email']::placeholder {
+  opacity: 0.3;
+  /* color: #cf1322; */
+}
+input[type='password']::placeholder {
+  opacity: 0.3;
+}
+
 .form-control.role-section:focus {
   outline: none;
   border-color: #ff6b6b; /* Example blue highlight */
@@ -180,7 +188,5 @@ h3 {
   img {
     position: relative;
     display: none;
-
-    /* height: 100%; */
   }
 }
